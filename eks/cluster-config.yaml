@@ -1,0 +1,28 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: mapclub
+  region: ap-southeast-1
+  label:
+    app: mapclub
+
+managedNodeGroups:
+  - name: frontend
+    instanceType: m5.large
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 2
+    volumeSize: 80
+    ssh:
+      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+      publicKeyPath: /home/arun/projects/kubernetes/eks/ssh/eks.pub
+  - name: backend
+    instanceType: t2.xlarge
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 2
+    volumeSize: 80
+    ssh:
+      allow: true # will use ~/.ssh/id_rsa.pub as the default ssh key
+      publicKeyPath: /home/arun/projects/kubernetes/eks/ssh/eks.pub

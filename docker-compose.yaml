@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  nginx-php:
+    image: arunjayakumar/node-angular:0.1
+    container_name: node_angular_container
+    restart: always
+    ports:
+      - "8181:80"
+      - "3001:3000"

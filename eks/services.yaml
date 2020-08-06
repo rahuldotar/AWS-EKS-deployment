@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-angular-service
+  namespace: nodeangular
+  labels:
+    app: nodeangular
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 80
+      protocol: TCP
+    - name: nodejsport
+      port: 3000
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: nodeangular
+  type: NodePort

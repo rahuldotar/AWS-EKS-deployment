@@ -1,0 +1,7 @@
+.idea/
+client/node_modules/
+server/node_modules/
+eks/TLS-secret-kube-dash.accubits.com.yaml
+eks/docker-registry-secret.yml
+eks/ssh/eks
+eks/ssh/eks.pub

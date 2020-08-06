@@ -1,0 +1,1 @@
+docker run --name nodeanular -p 81:80 -p 3000:3000  -d node-angular:0.1

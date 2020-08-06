@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  proxy-connect-timeout: "10"
+  proxy-read-timeout: "120"
+  proxy-send-timeout: "120"
+  http-redirect-code: "301"
+  ssl-redirect: "false"
+kind: ConfigMap
+metadata:
+  name: ingress-nginx-controller
+  namespace: nodeangular
+  labels:
+    app: nodeangular
+    nginx: nodeangular

@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/server-snippet: |-
+      http2_max_field_size 16k;
+      http2_max_header_size 128k;
+
+  name: nodeangular
+  namespace: nodeangular
+  labels:
+    app: nodeangular
+    nginx : nodeangular
+spec:
+  rules:
+    - host: kube-dash.accubits.com
+      http:
+        paths:
+          - backend:
+              serviceName: node-angular-service
+              servicePort: 80
+            path: /
+    - host: kube-api.accubits.com
+      http:
+        paths:
+          - backend:
+              serviceName: node-angular-service
+              servicePort: 3000
+            path: /
+  tls:
+    - hosts:
+        - kube-dash.accubits.com
+      secretName: kube-dash.accubits.com-tls
+

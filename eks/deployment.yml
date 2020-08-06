@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeangular
+  namespace: nodeangular
+  labels:
+    app: nodeangular
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodeangular
+  template:
+    metadata:
+      labels:
+        app: nodeangular
+    spec:
+      serviceAccount: nodeangular
+      containers:
+        - name: nodeangular
+          image: arunjayakumar/node-angular:0.1
+          env:
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "1000m"
+            limits:
+              memory: "128Mi"
+              cpu: "2000m"
+          ports:
+            - name: http-port
+              containerPort: 80
+            - name: nodejs-api-port
+              containerPort: 3000
+#          command: ["sleep", "infinity"]
+      imagePullSecrets:
+        - name: docker-reg-cred

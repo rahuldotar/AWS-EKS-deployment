@@ -1,0 +1,15 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-angular-autoscaler
+  namespace: nodeangular
+  labels:
+    app: nodeangular
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nodeangular
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 10
